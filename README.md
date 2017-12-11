@@ -3,6 +3,10 @@
 This project is completly based on the [forked repo](https://github.com/witnessmenow/esp8266-alexa-wemo-emulator)
 Only thing changed is that it works with ESP32.
 I didnt have time to set flag (#define)... (sorry)
+
+ALL CREDITS ACCTUALLY GO TO ORIGINAL AUTHOR FOR 8266 !
+I hope he is OK with this modification.
+
 Below are original instructions:
 
 
