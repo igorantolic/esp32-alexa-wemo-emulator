@@ -1,4 +1,4 @@
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 
 #include "WemoSwitch.h"
 #include "WemoManager.h"
@@ -18,7 +18,7 @@ char password[] = "yyyy";  // your network key
 WemoManager wemoManager;
 WemoSwitch *light = NULL;
 
-const int ledPin = BUILTIN_LED;
+const int ledPin = 19;
 
 void setup()
 {
@@ -46,7 +46,7 @@ void setup()
 
   wemoManager.begin();
   // Format: Alexa invocation name, local port no, on callback, off callback
-  light = new WemoSwitch("test lights", 80, lightOn, lightOff);
+  light = new WemoSwitch("DESK lights", 80, lightOn, lightOff);
   wemoManager.addDevice(*light);
 
   pinMode(ledPin, OUTPUT); // initialize digital ledPin as an output.
