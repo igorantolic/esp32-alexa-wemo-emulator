@@ -26,7 +26,8 @@ bool WemoManager::begin(){
 
   Serial.println("Begin multicast ..");
 
-  if(UDP.beginMulticast(WiFi.localIP(), ipMulti, portMulti)) {
+  //if(UDP.beginMulticast(WiFi.localIP(), ipMulti, portMulti)) {
+  if(UDP.beginMulticast(ipMulti, portMulti)) {
     Serial.print("Udp multicast server started at ");
     Serial.print(ipMulti);
     Serial.print(":");
