@@ -1,3 +1,11 @@
+#Arduino Esp32 Alexa Wemo switch emulator
+
+This project is completly based on the [forked repo](https://github.com/witnessmenow/esp8266-alexa-wemo-emulator)
+Only thing changed is that it works with ESP32.
+I didnt have time to set flag (#define)... (sorry)
+Below are original instructions:
+
+
 #Arduino Esp8266 Alexa Wemo switch emulator
 
 This project is completly based on the [forked repo](https://github.com/kakopappa/arduino-esp8266-alexa-multiple-wemo-switch), all the hard work was done by kakopappa. I just reworked their code to make it consumable as a Arduino library so it could be easily pulled into other projects.
