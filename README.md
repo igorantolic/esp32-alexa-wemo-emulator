@@ -24,3 +24,13 @@ The downloaded code can be included as a new library into the IDE selecting the 
 Restart the Arduino IDE and follow the examples located at
 
      File -> Examples -> Esp32AlexaWemoEmulator
+     
+## Activating and using with Amazon Echo Dot / Alexa
+
+After uploading sketch to microcontroler (and waiting a few seconds to let it connect to local WiFI, say:
+
+"Alexa, discover devices!"
+
+Alexa should find as many switches you configured, and should know them by names you defined in code. If you name some switch as "Living room light" you can say:
+
+"Alexa, turn living room lights on"
