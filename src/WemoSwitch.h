@@ -2,15 +2,15 @@
 #define WemoSwitch_H
 
 #include <Arduino.h>
-#include <ESP8266WiFi.h>
-#include <ESP8266WebServer.h>
+#include <WiFi.h>
+#include <WebServer.h>
 #include <WiFiUdp.h>
 #include "CallbackFunction.h"
 
 
 class WemoSwitch {
 private:
-        ESP8266WebServer *server = NULL;
+        WebServer *server = NULL;
         WiFiUDP UDP;
         String serial;
         String persistent_uuid;
