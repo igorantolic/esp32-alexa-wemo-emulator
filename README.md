@@ -1,4 +1,8 @@
-## Arduino Esp32 Alexa Wemo switch emulator
+## Using ESP32 with Alexa to control lights and switches (without cloud service - local only!)
+
+"Alexa, turn living room lights on"
+
+aka "Arduino Esp32 Alexa Wemo switch emulator"
 
 This project is completly based on the [forked repo](https://github.com/witnessmenow/esp8266-alexa-wemo-emulator)
 Only thing changed is that it works with ESP32.
