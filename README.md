@@ -25,6 +25,10 @@ Restart the Arduino IDE and follow the examples located at
 
      File -> Examples -> Esp32AlexaWemoEmulator
      
+Note: you might need 
+     
+     https://github.com/zhouhan0126/WebServer-esp32     
+     
 ## Activating and using with Amazon Echo Dot / Alexa
 
 After uploading sketch to microcontroler (and waiting a few seconds to let it connect to local WiFI, say:
