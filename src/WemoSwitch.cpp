@@ -23,6 +23,7 @@ WemoSwitch::WemoSwitch(String alexaInvokeName, unsigned int port, CallbackFuncti
     localPort = port;
     onCallback = oncb;
     offCallback = offcb;
+    deviceStatus = "0";
 
     startWebServer();
 }
@@ -116,9 +117,13 @@ void WemoSwitch::handleUpnpControl(){
 
   String response_xml = "";
 
-  if(request.indexOf("<BinaryState>1</BinaryState>") > 0) {
+  if(
+      (request.indexOf("<u:SetBinaryState xmlns:u=\"urn:Belkin:service:basicevent:1\">") > 0)
+      and (request.indexOf("<BinaryState>1</BinaryState>") > 0)
+    ) {
       Serial.println("Got Turn on request");
       onCallback();
+      deviceStatus = "1";
       response_xml =  "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\" s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">"
                         "<s:Body>"
                           "<u:SetBinaryStateResponse xmlns:u=\"urn:Belkin:service:basicevent:1\">"
@@ -129,14 +134,30 @@ void WemoSwitch::handleUpnpControl(){
                       "\r\n";
   }
 
-  if(request.indexOf("<BinaryState>0</BinaryState>") > 0) {
+  if(
+      (request.indexOf("<u:SetBinaryState xmlns:u=\"urn:Belkin:service:basicevent:1\">") > 0)
+      and (request.indexOf("<BinaryState>0</BinaryState>") > 0)
+    ) {
       Serial.println("Got Turn off request");
       offCallback();
+      deviceStatus = "0";
       response_xml =  "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\" s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">"
                         "<s:Body>"
                           "<u:SetBinaryStateResponse xmlns:u=\"urn:Belkin:service:basicevent:1\">"
                             "<BinaryState>0</BinaryState>"
                           "</u:SetBinaryStateResponse>"
+                        "</s:Body>"
+                      "</s:Envelope>\r\n"
+                      "\r\n";
+  }
+
+  if(request.indexOf("<u:GetBinaryState xmlns:u=\"urn:Belkin:service:basicevent:1\">") > 0) {
+      Serial.println("Got GetStatus request");
+      response_xml =  "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\" s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">"
+                        "<s:Body>"
+                          "<u:GetBinaryStateResponse xmlns:u=\"urn:Belkin:service:basicevent:1\">"
+                            "<BinaryState>" + deviceStatus + "</BinaryState>"
+                          "</u:GetBinaryStateResponse>"
                         "</s:Body>"
                       "</s:Envelope>\r\n"
                       "\r\n";
