@@ -122,8 +122,8 @@ void WemoSwitch::handleUpnpControl(){
       and (request.indexOf("<BinaryState>1</BinaryState>") > 0)
     ) {
       Serial.println("Got Turn on request");
-      onCallback();
       deviceStatus = "1";
+      onCallback();
       response_xml =  "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\" s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">"
                         "<s:Body>"
                           "<u:SetBinaryStateResponse xmlns:u=\"urn:Belkin:service:basicevent:1\">"
@@ -139,8 +139,8 @@ void WemoSwitch::handleUpnpControl(){
       and (request.indexOf("<BinaryState>0</BinaryState>") > 0)
     ) {
       Serial.println("Got Turn off request");
-      offCallback();
       deviceStatus = "0";
+      offCallback();
       response_xml =  "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\" s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">"
                         "<s:Body>"
                           "<u:SetBinaryStateResponse xmlns:u=\"urn:Belkin:service:basicevent:1\">"
