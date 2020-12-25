@@ -32,6 +32,8 @@ public:
         String getAlexaInvokeName();
         void serverLoop();
         void respondToSearch(IPAddress& senderIP, unsigned int senderPort);
+        void turnOff() { deviceStatus = "0"; }
+        void turnOn() { deviceStatus = "1"; }
 };
 
 #endif
